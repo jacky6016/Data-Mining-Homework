@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawSeriesChart);
+
+    function drawSeriesChart() {
+
+      var data = google.visualization.arrayToDataTable([
+        ['ID', 	     'FPMI',    'PSI',    'Status',   'Population'],
+        ['台北市',    1.5,      35.17,    'Good',      2702315],
+        ['新北市',    1.9,      34.5,     'Good',      3966818],
+        ['桃園市',    1.8,      38,       'Good',      2058328],
+        ['台中市',    1,        35.25,    'Good',      2719835],
+        ['台南市',    3.91,     46.75,    'Good',      1884284],
+        ['高雄市',    5.73,     70.18,    'Normal',    2778992]
+      ]);
+
+      var options = {
+        title: '六都空氣品質',
+        hAxis: {title: 'PSI'},
+        vAxis: {title: 'FPMI'},
+        bubble: {textStyle: {fontSize: 11}}
+      };
+
+      var chart = new google.visualization.BubbleChart(document.getElementById('series_chart_div'));
+      chart.draw(data, options);
+    }
+    </script>
+  </head>
+  <body>
+    <div id="series_chart_div" style="width: 900px; height: 700px;"></div>
+  </body>
+</html>
